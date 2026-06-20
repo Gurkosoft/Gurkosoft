@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gurkosoft – Entdecke Doors 12!</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gurkosoft.github.io/Doors12/">
+    <meta property="og:title" content="Gurkosoft">
+    <meta property="og:description" content="Doors 12 von Gurkosoft!">
+    <meta property="og:image" content="https://github.com/Gurkosoft/Gurkosoft/blob/main/Vorschaubild.png?raw=true">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gurkosoft">
+    <meta name="twitter:description" content="Doors 12 von Gurkosoft!">
+    <meta name="twitter:image" content="https://github.com/Gurkosoft/Gurkosoft/blob/main/Vorschaubild.png?raw=true">
+</head>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Globale Variablen für einfachere Anpassung */
+        :root {
+            --bg-color: #0f1115;
+            --panel-bg: rgba(255, 255, 255, 0.06);
+            --panel-border: rgba(255, 255, 255, 0.1);
+            --text-color: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-color: #008b8b; /* Passend zu Doors 12 */
+            --accent-hover: #00b3b3;
+            --font-family: 'Open Sans', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(15, 17, 21, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 1000;
+            transition: transform var(--transition-speed) ease-in-out;
+        }
+
+        /* Klasse wird per JavaScript gesteuert beim Scrollen */
+        .navbar--hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        /* Platzhalter für das Logo, falls kein Bild da ist */
+        .logo-placeholder {
+            height: 40px;
+            width: 150px;
+            background: var(--panel-bg);
+            border: 1px dashed var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- HERO HEADER --- */
+        .hero-header {
+            position: relative;
+            width: 100%;
+            height: 50vh; /* Nimmt die Hälfte des Bildschirms ein */
+            min-height: 350px;
+            margin-top: 70px; /* Platz für die Navleiste */
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--panel-border);
+            overflow: hidden;
+        }
+
+.hero-header--bg-image {
+    /* Hier den Pfad zu deinem Hintergrundbild eintragen */
+    background-image: linear-gradient(rgba(15, 17, 21, 0.6), rgba(15, 17, 21, 0.8)), url('https://github.com/Gurkosoft/Gurkosoft/blob/main/Header-Startseite.png?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+        /* Subtiler moderner Schein im Hintergrund des Headers */
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-color);
+            filter: blur(150px);
+            opacity: 0.2;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- MAIN CONTENT & LAYOUT-MODULE --- */
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Standard Text-Stile für einfaches Erstellen von Unterseiten */
+        .content-block {
+            margin-bottom: 3rem;
+        }
+
+        .content-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .content-block p {
+            margin-bottom: 1.25rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--panel-bg);
+            color: var(--text-color);
+            border: 1px solid var(--panel-border);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--panel-border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">
+<a href="https://gurkosoft.github.io/Gurkosoft/"><img src="https://github.com/Gurkosoft/Gurkosoft/blob/main/Logo-White.png?raw=true" alt="Gurkosoft Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="https://gurkosoft.github.io/Gurkosoft/doors-12.html/">Doors 12</a></li>
+            <li><a href="">Technologie</a></li>
+            <li><a href="">Über uns</a></li>
+            <li><a href="">Kontakt</a></li>
+        </ul>
+    </nav>
+
+<header class="hero-header hero-header--bg-image">
+    <div class="hero-content">
+        <h1>Doors 12</h1>
+        <p>Entdecke Doors 12 in seinen vielseitigen Funktionen!</p>
+    </div>
+</header>
+
+    <main class="content-container">
+
+        <article class="content-block">
+            <h2>Ein völlig neues Interface-Erlebnis</h2>
+            <p>Bei Gurkosoft arbeiten wir unermüdlich daran, Barrieren zwischen Mensch und Maschine abzubauen. Mit unserem neuesten Projekt, Doors 12, setzen wir neue Maßstäbe in Sachen Geschwindigkeit, Modernität und Transparenz im Design.</p>
+            <p>Durch den Einsatz zukunftsweisender Webtechnologien fühlt sich jede Interaktion flüssig und natürlich an. Die Benutzeroberfläche passt sich dynamisch an deine Bedürfnisse an, ohne dich mit unnötigem Ballast abzulenken.</p>
+        </article>
+
+        <div class="btn-container">
+            <a href="https://gurkosoft.github.io/Doors12/" class="btn btn-primary">Doors 12 kostenlos im Browser testen</a>
+        </div>
+
+      
+        <article class="content-block">
+            <h2>Du willst mehr erfahren?</h2>
+            <p>Auf folgenden Seiten erklären wir dir wichtige Tools in Doors 12!</p>
+        </article>
+
+              <div class="btn-container">
+            <a href="https://gurkosoft.github.io/Doors12/" class="btn btn-primary">Gurweb - Dein Browser</a>
+            <a href="https://gurkosoft.github.io/Doors12/" class="btn btn-secondary">System personalisieren ist ganz einfach!</a>
+            <a href="https://gurkosoft.github.io/Doors12/" class="btn btn-primary">Dateien verwalten mit Doors 12</a>
+            <a href="https://gurkosoft.github.io/Doors12/" class="btn btn-secondary">Gurk-Office - Schreiben, gestalten, präsentieren!</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Gurkosoft.</p>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Nach unten scrollen -> Navleiste ausblenden
+                navbar.classList.add('navbar--hidden');
+            } else {
+                // Nach oben scrollen -> Navleiste einblenden
+                navbar.classList.remove('navbar--hidden');
+            }
+            
+            // Verhindert negative Werte (z.B. beim "Bouncen" auf iOS)
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        });
+    </script>
+</body>
+</html>
